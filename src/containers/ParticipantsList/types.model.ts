@@ -1,8 +1,8 @@
 export enum MITypes {
-  Guide, AD, MI, No
+  Guide, AD, MI, No,
 }
 
-export class Participant {
+export interface Participant {
   id: string;
   firstName: string;
   lastName: string;
@@ -13,26 +13,26 @@ export class Participant {
   mi: keyof typeof MITypes;
 }
 
-export class ParticipantsListState {
+export interface ParticipantsListState {
   filterOpened: boolean;
   list: Participant[];
-  sortColumn: string;
+  sortColumn?: string;
   sortDirectionAsc: boolean;
 }
 
-export class FilterState {
+export interface FilterState {
   country: string[];
   city: string[];
   mi: string[];
 }
 
-export class ListItem {
+export interface ListItem {
   value: string;
   label: string;
   tooltip?: string;
 }
 
-export class FilterData {
+export interface FilterData {
   country: ListItem[];
   city: ListItem[];
   mi: ListItem[];

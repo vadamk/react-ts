@@ -1,14 +1,14 @@
 import * as faker from 'faker';
 
-import { Participant, MITypes, ListItem } from './types';
+import { Participant, MITypes, ListItem } from './types.model';
 
-export const enumToArray = en => Object.keys(en)
-  .filter(v => isNaN(Number(v)) === false)
-  .map(key => en[key]);
+export const enumToArray = (en: any): any[] => Object.keys(en)
+  .filter((key: string) => isNaN(Number(key)) === false)
+  .map((key: string) => en[key]);
 
-export const sortBy = (arr: unknown[], field: string | string[], asc = true) => {
+export const sortBy = (arr: any[], field: string | string[], asc = true) => {
 
-  return [...arr].sort((a: string, b: string) => {
+  return [...arr].sort((a, b) => {
 
     let lowerA, lowerB;
 
@@ -21,7 +21,7 @@ export const sortBy = (arr: unknown[], field: string | string[], asc = true) => 
     }
 
     let res = 0;
-    
+
     if (lowerA > lowerB) {
       res = -1;
     } else if (lowerA < lowerB) {
@@ -30,7 +30,7 @@ export const sortBy = (arr: unknown[], field: string | string[], asc = true) => 
 
     return asc ? res : res * -1;
   });
-}
+};
 
 export const genParticipant = (): Participant => {
 
@@ -42,7 +42,7 @@ export const genParticipant = (): Participant => {
   const email = faker.internet.email(firstName, lastName);
 
   const phoneNumber = faker.phone.phoneNumber('(0##) ### ## ##');
-  
+
   const country = faker.address.country();
   const city = faker.address.city();
 
@@ -63,10 +63,10 @@ export const genParticipant = (): Participant => {
 
 export const toCamelCase = (str: string) => str
   .split(/[^a-zA-Z0-9]+/) // everything except letters and numbers
-  .map(word => word && word[0].toUpperCase() + word.slice(2))
+  .map((word: string) => word && word[0].toUpperCase() + word.slice(2))
   .join('');
 
 export const strToListItem = (str: string): ListItem => ({
   value: toCamelCase(str),
   label: str,
-})
+});

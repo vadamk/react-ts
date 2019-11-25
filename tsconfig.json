@@ -1,10 +1,19 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "baseUrl": "src",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
+    ],
+    "rootDirs": [
+      "components",
+      "containers",
+      "HOCs",
+      "models",
+      "services",
+      "store"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -21,5 +30,15 @@
   },
   "include": [
     "src"
+  ],
+  "plugins": [
+    {
+      "name": "typescript-styled-plugin",
+      "tags": [
+        "styled",
+        "css",
+        "sty"
+      ]
+    }
   ]
 }
